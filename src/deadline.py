@@ -7,7 +7,7 @@ import datetime
 import time
 import sys
 
- 
+
 def login():
     # 打开淘宝登录页，并进行扫码登录
     print('start login')
@@ -19,11 +19,11 @@ def login():
         time.sleep(15)
         browser.get("https://cart.taobao.com/cart.htm?spm=a21bo.2017.1997525049.1.5af911d9YEd2En&from=mini&ad_id=&am_id=&cm_id=&pm_id=1501036000a02c5c3739")
     time.sleep(3)
- 
+
     now = datetime.datetime.now()
     print('login success:', now.strftime('%Y-%m-%d %H:%M:%S'))
- 
- 
+
+
 def buy(times, choose):
     # 点击购物车里全选按钮
     if choose == 2:
@@ -38,7 +38,7 @@ def buy(times, choose):
                 browser.find_element_by_id("J_SelectAll1").click()
         except:
             print("找不到全选按钮")
- 
+
     while True:
         now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
         # 对比时间，时间到的话就点击结算
@@ -46,7 +46,7 @@ def buy(times, choose):
             #print("time : ",now)
             #print("times : ",tomes)
             #print('时间到了。。。。。')
- 
+
             # 点击结算按钮
             try:
                 #print('looking for J_Go')
@@ -56,7 +56,7 @@ def buy(times, choose):
                     print("结算成功")
             except KeyboardInterrupt:
                 sys.exit(0)
- 
+
             while True:
                 try:
                     print('looking for 提交订单按钮')
@@ -74,8 +74,8 @@ def buy(times, choose):
         else:
             print('时间不到')
             time.sleep(0.02)
- 
- 
+
+
 if __name__ == "__main__":
     times = input("请输入抢购时间，格式如(2018-09-06 11:26:00.000000):")
     # 时间格式："2019-06-14 09:59:00.000000"
